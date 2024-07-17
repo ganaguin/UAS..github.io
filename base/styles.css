@@ -58,7 +58,7 @@ header nav ul li a:hover {
 }
 
 .hero {
-    background: url('../asset/1\ \(5\).jpeg') no-repeat center center/cover;
+    background: url('asset/1 (5).jpeg') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     flex-direction: column;
