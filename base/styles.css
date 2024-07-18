@@ -92,7 +92,6 @@ header nav ul li a:hover {
 @media (max-width: 768px) {
     .hero {
         background: url('../asset/homepagephone.jpeg') no-repeat center center;
-        background-size: 17%; /* Ubah ukuran background untuk tampilan mobile */
         height: 100vh; /* Sesuaikan tinggi untuk tampilan mobile */
     }
 }
