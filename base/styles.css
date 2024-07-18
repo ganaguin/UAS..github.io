@@ -229,3 +229,16 @@ footer {
     font-size: 14px;
     color: #666;
 }
+
+.gallery img{
+    width: 1080px;
+    border-radius: 10px;
+}
+
+.leadership-profile img {
+    width: 200px;
+    height: 300px;
+}
+.about {
+    padding-block: 1000px;
+}
