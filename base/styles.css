@@ -12,6 +12,7 @@ img {
     transform-origin: center center;
 }
 
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -88,6 +89,13 @@ header nav ul li a:hover {
     
 }
 
+@media (max-width: 768px) {
+    .hero {
+        background: url('../asset/homepagephone.jpeg') no-repeat center center;
+        background-size: 17%; /* Ubah ukuran background untuk tampilan mobile */
+        height: 100vh; /* Sesuaikan tinggi untuk tampilan mobile */
+    }
+}
 .hero p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
