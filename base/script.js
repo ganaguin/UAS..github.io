@@ -1,22 +1,61 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const checkboxes = document.querySelectorAll('.product-checkbox');
-    const totalPriceElement = document.getElementById('total-price');
-
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', calculateTotal);
+document.addEventListener('DOMContentLoaded', () => {
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
     });
 
-    function calculateTotal() {
-        let total = 0;
+    // Add scroll animation to sections
+    const sections = document.querySelectorAll('section');
+    const options = {
+        threshold: 0.1
+    };
 
-        checkboxes.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                const product = checkbox.closest('.product');
-                const price = parseFloat(product.getAttribute('data-price'));
-                total += price;
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
         });
+    }, options);
 
-        totalPriceElement.textContent = total;
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Form validation
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (name === '' || email === '' || message === '') {
+            alert('Semua bidang harus diisi!');
+        } else if (!validateEmail(email)) {
+            alert('Email tidak valid!');
+        } else {
+            alert('Pesan berhasil dikirim!');
+            form.reset();
+        }
+    });
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
     }
+
+    // Parallax and zoom effect on hero section
+    const hero = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+        hero.style.backgroundSize = `${100 + scrollPosition * 0.1}%`; // Adjusted for zoom effect
+    });
 });
