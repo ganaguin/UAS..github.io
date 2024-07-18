@@ -116,6 +116,37 @@ header nav ul li a:hover {
     color: #ffffff;
 }
 
+.text-link {
+    color: #000000f0; /* Modern blue color */
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.text-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #4c9bf0;
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+
+.text-link:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+.text-link:hover::after {
+    width: 100%; /* Full width underline on hover */
+    left: 0;
+    background: #0056b3; /* Match underline color with text color on hover */
+}
+
 section {
     text-align: center;
     opacity: 0;
